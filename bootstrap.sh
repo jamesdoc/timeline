@@ -10,3 +10,4 @@ sudo apt-get -y install python-pip
 
 sudo pip install tornado
 sudo pip install requests
+sudo pip install Jinja2
