@@ -6,7 +6,16 @@
     </head>
 
     <body>
-    	<h1>Hello world</h1>
+
+    	{% for shoe in shoes|sort(attribute='fields.year_start') %}
+    	
+    	    <img src="http://media.vam.ac.uk/media/thira/collection_images/{{ shoe.fields.primary_image_id[0:6] }}/{{ shoe.fields.primary_image_id }}_jpg_ds.jpg" />
+    	    
+    	    {{ shoe.fields }}
+    	    
+    	    <hr />
+    	    
+    	{% endfor %}
     </body>
 
 </html>

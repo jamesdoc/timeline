@@ -1,6 +1,9 @@
 import tornado.ioloop
 import tornado.web
 import tornado.autoreload
+
+import json
+
 from os import path, environ, walk
 from tornado.options import define, options, parse_command_line
 from jinja2 import Environment, FileSystemLoader, TemplateNotFound
@@ -26,6 +29,15 @@ class TemplateRendering(object):
 
 class IndexHandler(tornado.web.RequestHandler, TemplateRendering):
     def get(self):
+        
+        json_data=open('assets/shoes.json')
+        shoes_data = json.load(json_data)
+        json_data.close()
+        
+        data = {
+            'shoes':shoes_data
+        }
+        
         content = self.render_template('index.html', data)
         self.write(content)
 
